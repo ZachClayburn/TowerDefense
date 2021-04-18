@@ -8,6 +8,9 @@ include(cmake/PreventInSourceBuilds.cmake)
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_20)
+target_compile_definitions(project_options INTERFACE
+        RESOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/resources"
+)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
   option(ENABLE_BUILD_WITH_TIME_TRACE "Enable -ftime-trace to generate time tracing .json files on clang" OFF)
@@ -57,7 +60,9 @@ if(ENABLE_PCH)
 endif()
 
 # Set up some extra Conan dependencies based on our needs before loading Conan
-set(CONAN_EXTRA_REQUIRES "")
+set(CONAN_EXTRA_REQUIRES
+        entt/3.7.0
+        )
 set(CONAN_EXTRA_OPTIONS "")
 
 if(CPP_STARTER_USE_IMGUI)

@@ -1,10 +1,11 @@
 add_library(UI STATIC
-        include/MainWindow.h MainWindow.cpp
+        include/Window.h Window.cpp
         Renderer.h Renderer.cpp
 )
 
 target_link_libraries(UI
-        PRIVATE olcPixelGameEngine
+        PUBLIC olcPixelGameEngine
+        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
         )
 
 target_include_directories(UI

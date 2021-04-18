@@ -1,6 +1,7 @@
-#include "MainWindow.h"
+#include "Application.h"
 
 int main(int /*argc*/, const char** /*argv*/) {
-    MainWindow mainWindow;
-    return mainWindow.run();
+    Application application;
+    application.run();
+    return 0;
 }
